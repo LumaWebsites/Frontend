@@ -15,7 +15,7 @@ export default function Work() {
             Our <span className="text-amber">work</span>
           </h1>
           <p className="mt-4 text-primary-foreground/50 max-w-lg text-lg">
-            Real websites we've built for real small businesses. Click any project to see the full story.
+            Examples of the websites we build for small businesses. Click any project to see the full story.
           </p>
         </div>
       </section>
