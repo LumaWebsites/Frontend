@@ -88,7 +88,7 @@ export default function About() {
       <section className="bg-navy pt-32 pb-16 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground">
-            About <span className="text-amber">Luma Sites</span>
+            About <span className="text-amber">Luma Websites</span>
           </h1>
         </div>
       </section>
@@ -102,7 +102,7 @@ export default function About() {
 
               <div className="space-y-6">
                 <p className="text-lg text-foreground leading-relaxed">
-                  <span className="font-display font-bold">Luma Sites was built for the businesses that get overlooked.</span>
+                  <span className="font-display font-bold">Luma Websites was built for the businesses that get overlooked.</span>
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   The local restaurant without a website. The contractor relying on word of mouth. The salon with a Facebook page from 2015.

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Paintbrush, Search } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import PortfolioCard from "@/components/PortfolioCard";
+import PortfolioCard, { CaseStudyPanel, type Project } from "@/components/PortfolioCard";
 import { projects } from "@/data/projects";
 
 const steps = [
@@ -17,50 +18,71 @@ function HeroBrowserMockup() {
       {/* Browser chrome */}
       <div className="bg-[hsl(216,40%,22%)] px-4 py-2.5 flex items-center gap-2 border-b border-primary-foreground/10">
         <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-primary-foreground/20" />
-          <div className="w-2.5 h-2.5 rounded-full bg-primary-foreground/20" />
-          <div className="w-2.5 h-2.5 rounded-full bg-primary-foreground/20" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[hsl(0,70%,65%)]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[hsl(45,80%,60%)]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[hsl(130,50%,55%)]" />
         </div>
         <div className="flex-1 mx-3">
-          <div className="bg-primary-foreground/5 rounded-md px-3 py-1 text-[10px] text-primary-foreground/30">
+          <div className="bg-primary-foreground/8 rounded-md px-3 py-1 text-[10px] text-primary-foreground/40">
             www.yourbusiness.com
           </div>
         </div>
       </div>
 
       {/* Website mockup content */}
-      <div className="bg-[hsl(216,45%,18%)] aspect-[4/3] relative p-5 flex flex-col">
-        {/* Nav */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="h-2 w-20 rounded-full bg-amber/40" />
+      <div className="bg-[hsl(216,45%,18%)] aspect-[4/3] relative p-4 flex flex-col">
+        {/* Nav bar */}
+        <div className="flex items-center justify-between mb-4 pb-2 border-b border-primary-foreground/8">
+          <span className="text-[9px] font-bold text-amber/80 tracking-wide">YourBrand</span>
           <div className="flex gap-3">
-            <div className="h-1.5 w-8 rounded-full bg-primary-foreground/15" />
-            <div className="h-1.5 w-8 rounded-full bg-primary-foreground/15" />
-            <div className="h-1.5 w-8 rounded-full bg-primary-foreground/15" />
+            <span className="text-[7px] text-primary-foreground/30">Home</span>
+            <span className="text-[7px] text-primary-foreground/30">Services</span>
+            <span className="text-[7px] text-primary-foreground/30">About</span>
+            <span className="text-[7px] text-primary-foreground/30">Contact</span>
           </div>
         </div>
 
-        {/* Hero content */}
-        <div className="flex-1 flex flex-col justify-center">
-          <div className="h-3 w-3/4 rounded bg-primary-foreground/25 mb-2" />
-          <div className="h-3 w-1/2 rounded bg-primary-foreground/15 mb-4" />
-          <div className="h-1.5 w-2/3 rounded-full bg-primary-foreground/8 mb-1.5" />
-          <div className="h-1.5 w-1/2 rounded-full bg-primary-foreground/8 mb-5" />
-          <div className="flex gap-2">
-            <div className="h-6 w-16 rounded bg-amber/70" />
-            <div className="h-6 w-14 rounded border border-primary-foreground/15" />
+        {/* Hero section */}
+        <div className="mb-4">
+          <div className="text-[11px] font-bold text-primary-foreground/80 leading-tight mb-1">
+            Welcome to Your Business
+          </div>
+          <div className="text-[8px] text-primary-foreground/40 mb-3 max-w-[75%]">
+            We provide exceptional services for your community. Trusted by hundreds of local customers.
+          </div>
+          <div className="flex gap-1.5">
+            <div className="h-5 w-16 rounded-sm bg-amber/70 text-[6px] flex items-center justify-center font-medium text-primary-foreground/90">
+              Get Started
+            </div>
+            <div className="h-5 w-14 rounded-sm border border-primary-foreground/20 text-[6px] flex items-center justify-center text-primary-foreground/40">
+              Learn More
+            </div>
           </div>
         </div>
 
-        {/* Content cards row */}
-        <div className="grid grid-cols-3 gap-2 mt-auto">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="bg-primary-foreground/5 rounded p-2.5">
-              <div className="h-6 rounded bg-primary-foreground/8 mb-1.5" />
-              <div className="h-1 w-3/4 rounded-full bg-primary-foreground/10 mb-1" />
-              <div className="h-1 w-1/2 rounded-full bg-primary-foreground/7" />
+        {/* Features row */}
+        <div className="grid grid-cols-3 gap-2 mb-3">
+          {["Fast Service", "Top Quality", "Best Prices"].map((label) => (
+            <div key={label} className="bg-primary-foreground/5 rounded p-2 text-center">
+              <div className="w-4 h-4 rounded-full bg-amber/20 mx-auto mb-1.5" />
+              <div className="text-[6px] font-semibold text-primary-foreground/50">{label}</div>
+              <div className="h-1 w-3/4 mx-auto rounded-full bg-primary-foreground/8 mt-1" />
             </div>
           ))}
+        </div>
+
+        {/* Content section */}
+        <div className="grid grid-cols-2 gap-2 mt-auto">
+          <div className="bg-primary-foreground/4 rounded p-2">
+            <div className="h-8 rounded bg-primary-foreground/6 mb-1.5" />
+            <div className="h-1 w-full rounded-full bg-primary-foreground/8 mb-0.5" />
+            <div className="h-1 w-2/3 rounded-full bg-primary-foreground/6" />
+          </div>
+          <div className="bg-primary-foreground/4 rounded p-2">
+            <div className="h-8 rounded bg-primary-foreground/6 mb-1.5" />
+            <div className="h-1 w-full rounded-full bg-primary-foreground/8 mb-0.5" />
+            <div className="h-1 w-2/3 rounded-full bg-primary-foreground/6" />
+          </div>
         </div>
       </div>
     </div>
@@ -69,6 +91,7 @@ function HeroBrowserMockup() {
 
 export default function Home() {
   const previewProjects = projects.slice(0, 3);
+  const [selected, setSelected] = useState<Project | null>(null);
 
   return (
     <div>
@@ -161,7 +184,7 @@ export default function Home() {
           <ScrollReveal className="mt-14">
             <div className="grid md:grid-cols-3 gap-8">
               {previewProjects.map((project) => (
-                <PortfolioCard key={project.name} project={project} />
+                <PortfolioCard key={project.name} project={project} onSelect={setSelected} />
               ))}
             </div>
           </ScrollReveal>
@@ -190,6 +213,10 @@ export default function Home() {
           </ScrollReveal>
         </div>
       </section>
+
+      {selected && (
+        <CaseStudyPanel project={selected} onClose={() => setSelected(null)} />
+      )}
     </div>
   );
 }

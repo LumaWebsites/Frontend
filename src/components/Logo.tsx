@@ -10,7 +10,7 @@ export default function Logo({ variant = "light", className }: LogoProps) {
     <span className={cn("font-display text-2xl font-bold tracking-tight", className)}>
       <span className="text-amber">Luma</span>
       <span className={variant === "light" ? "text-primary-foreground" : "text-foreground"}>
-        Sites
+        Websites
       </span>
     </span>
   );
