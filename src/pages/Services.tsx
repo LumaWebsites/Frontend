@@ -133,6 +133,25 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Money-Back Guarantee */}
+      <section className="bg-navy py-16 px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <ScrollReveal>
+            <div className="flex justify-center mb-5">
+              <div className="w-14 h-14 rounded-full bg-amber/15 flex items-center justify-center">
+                <Check size={28} className="text-amber" />
+              </div>
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
+              100% Satisfaction Guaranteed
+            </h2>
+            <p className="mt-4 text-primary-foreground/50 max-w-lg mx-auto leading-relaxed">
+              If you're not completely happy with your new website, we'll make it right — or give you a full refund. No questions asked.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Care Plans */}
       <section className="section-padding bg-background">
         <div className="max-w-7xl mx-auto">

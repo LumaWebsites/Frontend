@@ -35,7 +35,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-primary-foreground/10 text-sm">
-          © 2026 Luma Sites. All rights reserved.
+          © 2026 Luma Websites. All rights reserved.
         </div>
       </div>
     </footer>
