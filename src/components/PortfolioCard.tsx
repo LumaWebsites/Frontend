@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ExternalLink, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +11,12 @@ export interface Project {
   result?: string;
   color: string;
   accent: string;
+  headline: string;
+  navLinks: string[];
+  heroColor: string;
+  heroAccent: string;
+  textColor: string;
+  subtextColor: string;
 }
 
 interface PortfolioCardProps {
@@ -20,33 +25,101 @@ interface PortfolioCardProps {
   className?: string;
 }
 
-function BrowserMockup({ project }: { project: Project }) {
+function BrowserMockup({ project, compact = false }: { project: Project; compact?: boolean }) {
   return (
     <div className="rounded-lg overflow-hidden border border-border/50 shadow-sm">
       {/* Browser chrome */}
-      <div className="bg-muted/80 px-4 py-2.5 flex items-center gap-2">
+      <div className="bg-[hsl(0,0%,95%)] px-3 py-2 flex items-center gap-2 border-b border-border/30">
         <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-foreground/15" />
-          <div className="w-2.5 h-2.5 rounded-full bg-foreground/15" />
-          <div className="w-2.5 h-2.5 rounded-full bg-foreground/15" />
+          <div className="w-2 h-2 rounded-full bg-[hsl(0,70%,65%)]" />
+          <div className="w-2 h-2 rounded-full bg-[hsl(45,80%,60%)]" />
+          <div className="w-2 h-2 rounded-full bg-[hsl(130,50%,55%)]" />
         </div>
-        <div className="flex-1 mx-4">
-          <div className="bg-background rounded-md px-3 py-1 text-[10px] text-muted-foreground truncate">
+        <div className="flex-1 mx-2">
+          <div className="bg-white rounded px-2.5 py-0.5 text-[9px] text-[hsl(0,0%,50%)] truncate border border-border/20">
             www.{project.name.toLowerCase().replace(/\s+/g, "")}.com
           </div>
         </div>
       </div>
-      {/* Page content mockup */}
-      <div className={cn("aspect-[16/10] relative", project.color)}>
-        <div className="absolute inset-0 p-6 flex flex-col justify-between">
-          <div className="space-y-3">
-            <div className={cn("h-2.5 w-28 rounded-full", project.accent)} />
-            <div className="h-5 w-3/4 rounded bg-white/20" />
-            <div className="h-3 w-1/2 rounded bg-white/10" />
+
+      {/* Website content mockup */}
+      <div className={cn("aspect-[16/10] relative", project.heroColor)}>
+        <div className="absolute inset-0 flex flex-col">
+          {/* Fake navbar */}
+          <div className={cn(
+            "flex items-center justify-between px-4 py-2 border-b",
+            project.heroColor === "bg-white" ? "border-[hsl(0,0%,90%)]" : "border-white/10"
+          )}>
+            <span className={cn("text-[9px] font-bold tracking-wide", project.textColor)}>
+              {project.name}
+            </span>
+            <div className="flex gap-3">
+              {project.navLinks.map((link) => (
+                <span key={link} className={cn("text-[7px]", project.subtextColor)}>
+                  {link}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="flex gap-3">
-            <div className={cn("h-8 w-24 rounded-md", project.accent)} />
-            <div className="h-8 w-20 rounded-md border border-white/20" />
+
+          {/* Hero area */}
+          <div className="flex-1 flex flex-col justify-center px-4 pb-2">
+            <div className={cn(
+              compact ? "text-[10px]" : "text-[11px]",
+              "font-bold leading-tight mb-1.5",
+              project.textColor
+            )}>
+              {project.headline}
+            </div>
+            <div className={cn("text-[7px] leading-relaxed mb-2.5 max-w-[70%]", project.subtextColor)}>
+              Serving our community with quality and care.
+            </div>
+            <div className="flex gap-1.5">
+              <div className={cn("h-4 w-14 rounded-sm text-[6px] flex items-center justify-center font-medium text-white", project.heroAccent)}>
+                Learn More
+              </div>
+              <div className={cn(
+                "h-4 w-12 rounded-sm text-[6px] flex items-center justify-center border",
+                project.heroColor === "bg-white" || project.heroColor === "bg-[hsl(30,40%,92%)]"
+                  ? "border-[hsl(0,0%,75%)] text-[hsl(0,0%,45%)]"
+                  : "border-white/30 text-white/60"
+              )}>
+                Contact
+              </div>
+            </div>
+          </div>
+
+          {/* Content blocks below hero */}
+          <div className={cn(
+            "px-4 pb-3 grid grid-cols-3 gap-2",
+          )}>
+            {[1, 2, 3].map((i) => (
+              <div key={i} className={cn(
+                "rounded-sm p-1.5",
+                project.heroColor === "bg-white" || project.heroColor === "bg-[hsl(30,40%,92%)]"
+                  ? "bg-[hsl(0,0%,96%)]"
+                  : "bg-white/5"
+              )}>
+                <div className={cn(
+                  "h-4 rounded-sm mb-1",
+                  project.heroColor === "bg-white" || project.heroColor === "bg-[hsl(30,40%,92%)]"
+                    ? "bg-[hsl(0,0%,90%)]"
+                    : "bg-white/8"
+                )} />
+                <div className={cn(
+                  "h-1 w-3/4 rounded-full mb-0.5",
+                  project.heroColor === "bg-white" || project.heroColor === "bg-[hsl(30,40%,92%)]"
+                    ? "bg-[hsl(0,0%,85%)]"
+                    : "bg-white/10"
+                )} />
+                <div className={cn(
+                  "h-1 w-1/2 rounded-full",
+                  project.heroColor === "bg-white" || project.heroColor === "bg-[hsl(30,40%,92%)]"
+                    ? "bg-[hsl(0,0%,88%)]"
+                    : "bg-white/7"
+                )} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -64,7 +137,7 @@ export default function PortfolioCard({ project, onSelect, className }: Portfoli
       )}
     >
       <div className="relative overflow-hidden rounded-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
-        <BrowserMockup project={project} />
+        <BrowserMockup project={project} compact />
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-navy/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
           <div className="flex items-center gap-2 text-primary-foreground font-medium">
