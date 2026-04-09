@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Paintbrush, Search, Star } from "lucide-react";
+import { MessageSquare, Paintbrush, Search } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import PortfolioCard from "@/components/PortfolioCard";
 import { projects } from "@/data/projects";
@@ -11,11 +11,61 @@ const steps = [
   { icon: Search, title: "You get found by more customers", desc: "Your site goes live, optimized for search, and starts working for your business 24/7." },
 ];
 
-const testimonials = [
-  { name: "Maria Gonzalez", business: "Rosewood Bakery", text: "I put off getting a website for years because I thought it would be too expensive and complicated. Luma Sites made it so easy — and now customers find us on Google every day.", rating: 5 },
-  { name: "James Whitfield", business: "Peak Line Roofing", text: "Within two weeks of launching our site, we started getting quote requests online. Best investment I've made for my business.", rating: 5 },
-  { name: "Dr. Sarah Chen", business: "Clarity Dental Studio", text: "Our old website looked like it was from 2010. Luma Sites gave us something we're genuinely proud to share with patients.", rating: 5 },
-];
+function HeroBrowserMockup() {
+  return (
+    <div className="rounded-xl overflow-hidden border border-primary-foreground/10 shadow-2xl shadow-black/20">
+      {/* Browser chrome */}
+      <div className="bg-[hsl(216,40%,22%)] px-4 py-2.5 flex items-center gap-2 border-b border-primary-foreground/10">
+        <div className="flex gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-primary-foreground/20" />
+          <div className="w-2.5 h-2.5 rounded-full bg-primary-foreground/20" />
+          <div className="w-2.5 h-2.5 rounded-full bg-primary-foreground/20" />
+        </div>
+        <div className="flex-1 mx-3">
+          <div className="bg-primary-foreground/5 rounded-md px-3 py-1 text-[10px] text-primary-foreground/30">
+            www.yourbusiness.com
+          </div>
+        </div>
+      </div>
+
+      {/* Website mockup content */}
+      <div className="bg-[hsl(216,45%,18%)] aspect-[4/3] relative p-5 flex flex-col">
+        {/* Nav */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="h-2 w-20 rounded-full bg-amber/40" />
+          <div className="flex gap-3">
+            <div className="h-1.5 w-8 rounded-full bg-primary-foreground/15" />
+            <div className="h-1.5 w-8 rounded-full bg-primary-foreground/15" />
+            <div className="h-1.5 w-8 rounded-full bg-primary-foreground/15" />
+          </div>
+        </div>
+
+        {/* Hero content */}
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="h-3 w-3/4 rounded bg-primary-foreground/25 mb-2" />
+          <div className="h-3 w-1/2 rounded bg-primary-foreground/15 mb-4" />
+          <div className="h-1.5 w-2/3 rounded-full bg-primary-foreground/8 mb-1.5" />
+          <div className="h-1.5 w-1/2 rounded-full bg-primary-foreground/8 mb-5" />
+          <div className="flex gap-2">
+            <div className="h-6 w-16 rounded bg-amber/70" />
+            <div className="h-6 w-14 rounded border border-primary-foreground/15" />
+          </div>
+        </div>
+
+        {/* Content cards row */}
+        <div className="grid grid-cols-3 gap-2 mt-auto">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="bg-primary-foreground/5 rounded p-2.5">
+              <div className="h-6 rounded bg-primary-foreground/8 mb-1.5" />
+              <div className="h-1 w-3/4 rounded-full bg-primary-foreground/10 mb-1" />
+              <div className="h-1 w-1/2 rounded-full bg-primary-foreground/7" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const previewProjects = projects.slice(0, 3);
@@ -30,29 +80,36 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-[600px] h-[400px] rounded-full bg-amber/3 blur-3xl" />
           <div className="absolute top-1/2 left-1/3 w-32 h-32 rounded-full border border-primary-foreground/5 animate-float" />
           <div className="absolute top-1/4 right-1/4 w-20 h-20 rounded-full border border-amber/10 animate-float" style={{ animationDelay: "2s" }} />
-          {/* Grid pattern */}
           <div className="absolute inset-0" style={{
             backgroundImage: "radial-gradient(circle at 1px 1px, hsl(var(--primary-foreground) / 0.03) 1px, transparent 0)",
             backgroundSize: "40px 40px",
           }} />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
-          <div className="max-w-3xl">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight tracking-tight">
-              Your business deserves <br className="hidden md:block" />
-              <span className="text-amber">to be found.</span>
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-primary-foreground/60 max-w-xl leading-relaxed">
-              We build fast, beautiful websites for small businesses — starting at $500.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button variant="amber" size="xl" asChild>
-                <Link to="/work">See Our Work</Link>
-              </Button>
-              <Button variant="hero-outline" size="xl" asChild>
-                <Link to="/contact">Get a Free Quote</Link>
-              </Button>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Copy */}
+            <div>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight tracking-tight">
+                Your business deserves <br className="hidden md:block" />
+                <span className="text-amber">to be found.</span>
+              </h1>
+              <p className="mt-6 text-lg md:text-xl text-primary-foreground/60 max-w-xl leading-relaxed">
+                We build fast, beautiful websites for small businesses — starting at $500.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Button variant="amber" size="xl" asChild>
+                  <Link to="/work">See Our Work</Link>
+                </Button>
+                <Button variant="hero-outline" size="xl" asChild>
+                  <Link to="/contact">Get a Free Quote</Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right: Browser mockup */}
+            <div className="hidden lg:block">
+              <HeroBrowserMockup />
             </div>
           </div>
         </div>
@@ -117,36 +174,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="section-padding-lg bg-warm-white">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground">
-              What our clients say
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal className="mt-14">
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((t, i) => (
-                <div key={i} className="stagger-child bg-card rounded-2xl p-8 shadow-sm border border-border/50">
-                  <div className="flex gap-0.5 mb-4">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} size={16} className="fill-amber text-amber" />
-                    ))}
-                  </div>
-                  <p className="text-foreground/80 text-sm leading-relaxed italic">"{t.text}"</p>
-                  <div className="mt-6 pt-4 border-t border-border/50">
-                    <p className="font-display font-semibold text-foreground text-sm">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.business}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="bg-navy section-padding-lg">
         <div className="max-w-7xl mx-auto text-center">
@@ -155,10 +182,10 @@ export default function Home() {
               Ready to get online?
             </h2>
             <p className="mt-4 text-primary-foreground/50 max-w-md mx-auto">
-              Let's build a website that works as hard as you do.
+              Let's build something you're proud of.
             </p>
             <Button variant="amber" size="xl" className="mt-8" asChild>
-              <Link to="/contact">Get Started</Link>
+              <Link to="/contact">Get Started Today</Link>
             </Button>
           </ScrollReveal>
         </div>
