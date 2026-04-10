@@ -10,73 +10,90 @@ const values = [
 
 function DesignIllustration() {
   return (
-    <div className="relative aspect-square max-w-md mx-auto lg:mx-0">
-      {/* Browser window frame */}
-      <div className="absolute inset-4 rounded-2xl overflow-hidden border border-border/60 shadow-lg bg-card">
-        {/* Browser chrome */}
-        <div className="bg-muted px-4 py-2.5 flex items-center gap-2 border-b border-border/50">
-          <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-foreground/15" />
-            <div className="w-2.5 h-2.5 rounded-full bg-foreground/15" />
-            <div className="w-2.5 h-2.5 rounded-full bg-foreground/15" />
+    <div className="relative max-w-lg mx-auto lg:mx-0" style={{ minHeight: 420 }}>
+      {/* Back layer — Clarity Dental */}
+      <div className="absolute top-0 right-0 w-[85%] rounded-xl overflow-hidden border border-border/40 shadow-lg rotate-2 origin-bottom-left z-0">
+        <div className="bg-[hsl(216,40%,22%)] px-3 py-2 flex items-center gap-2 border-b border-primary-foreground/10">
+          <div className="flex gap-1">
+            <div className="w-2 h-2 rounded-full bg-[hsl(0,70%,65%)]" />
+            <div className="w-2 h-2 rounded-full bg-[hsl(45,80%,60%)]" />
+            <div className="w-2 h-2 rounded-full bg-[hsl(130,50%,55%)]" />
           </div>
-          <div className="flex-1 mx-3">
-            <div className="bg-background rounded px-3 py-1 text-[10px] text-muted-foreground">
-              www.yourbusiness.com
+          <div className="flex-1 mx-2">
+            <div className="bg-primary-foreground/8 rounded px-2 py-0.5 text-[8px] text-primary-foreground/35">
+              www.claritydentalstudio.com
             </div>
           </div>
         </div>
-
-        {/* Website layout mockup */}
-        <div className="p-4 bg-background space-y-3">
-          {/* Nav */}
-          <div className="flex items-center justify-between pb-2 border-b border-border/30">
-            <div className="h-2 w-16 rounded-full bg-amber/40" />
-            <div className="flex gap-2">
-              <div className="h-1.5 w-6 rounded-full bg-muted-foreground/20" />
-              <div className="h-1.5 w-6 rounded-full bg-muted-foreground/20" />
-              <div className="h-1.5 w-6 rounded-full bg-muted-foreground/20" />
+        <div className="relative h-[160px] overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/6627519/pexels-photo-6627519.jpeg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[hsl(175,50%,20%)/0.4]" />
+          <div className="relative z-10 flex flex-col justify-center h-full px-4 py-3">
+            <div className="text-[11px] font-bold text-white leading-tight mb-1 drop-shadow-md">
+              Your Smile Deserves the Best Care
             </div>
-          </div>
-
-          {/* Hero block */}
-          <div className="bg-navy rounded-lg p-4 space-y-2">
-            <div className="h-2.5 w-3/4 rounded bg-primary-foreground/25" />
-            <div className="h-2 w-1/2 rounded bg-primary-foreground/15" />
-            <div className="h-1.5 w-2/3 rounded-full bg-primary-foreground/8 mt-2" />
-            <div className="flex gap-1.5 mt-2">
-              <div className="h-4 w-12 rounded bg-amber/70" />
-              <div className="h-4 w-10 rounded border border-primary-foreground/15" />
-            </div>
-          </div>
-
-          {/* Content grid */}
-          <div className="grid grid-cols-3 gap-2">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-muted/60 rounded p-2 space-y-1.5">
-                <div className="h-5 rounded bg-muted-foreground/8" />
-                <div className="h-1 w-3/4 rounded-full bg-muted-foreground/12" />
-                <div className="h-1 w-1/2 rounded-full bg-muted-foreground/8" />
+            <div className="mt-2">
+              <div className="h-4 w-20 rounded-sm bg-[hsl(175,60%,40%)] text-[6px] flex items-center justify-center font-semibold text-white">
+                Book Appointment
               </div>
-            ))}
-          </div>
-
-          {/* Footer area */}
-          <div className="pt-2 border-t border-border/30 flex justify-between items-center">
-            <div className="h-1.5 w-12 rounded-full bg-muted-foreground/15" />
-            <div className="flex gap-1.5">
-              <div className="h-1 w-4 rounded-full bg-muted-foreground/12" />
-              <div className="h-1 w-4 rounded-full bg-muted-foreground/12" />
-              <div className="h-1 w-4 rounded-full bg-muted-foreground/12" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Decorative accents behind the browser */}
-      <div className="absolute top-0 left-0 w-20 h-20 rounded-xl border-2 border-amber/15 -rotate-12" />
-      <div className="absolute bottom-2 right-0 w-16 h-16 rounded-full border-2 border-navy/10" />
-      <div className="absolute bottom-8 left-0 w-10 h-10 rounded bg-amber/8 rotate-12" />
+      {/* Front layer — Peak Line Roofing */}
+      <div className="relative z-10 mt-12 w-[92%] rounded-xl overflow-hidden border border-border/60 shadow-2xl">
+        <div className="bg-[hsl(216,40%,22%)] px-3 py-2 flex items-center gap-2 border-b border-primary-foreground/10">
+          <div className="flex gap-1">
+            <div className="w-2.5 h-2.5 rounded-full bg-[hsl(0,70%,65%)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[hsl(45,80%,60%)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[hsl(130,50%,55%)]" />
+          </div>
+          <div className="flex-1 mx-2">
+            <div className="bg-primary-foreground/8 rounded px-2 py-0.5 text-[9px] text-primary-foreground/40">
+              www.peaklineroofing.com
+            </div>
+          </div>
+        </div>
+
+        {/* Nav */}
+        <div className="bg-[hsl(215,35%,18%)] px-3 py-1.5 flex items-center justify-between border-b border-primary-foreground/6">
+          <span className="text-[8px] font-bold text-primary-foreground/70 tracking-wide">Peak Line Roofing</span>
+          <div className="flex gap-2">
+            <span className="text-[6px] text-primary-foreground/30">Services</span>
+            <span className="text-[6px] text-primary-foreground/30">Projects</span>
+            <span className="text-[6px] text-primary-foreground/30">About</span>
+            <span className="text-[6px] text-primary-foreground/30">Contact</span>
+          </div>
+        </div>
+
+        {/* Hero with image */}
+        <div className="relative h-[180px] overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/31771166/pexels-photo-31771166.jpeg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[hsl(215,40%,18%)/0.45]" />
+          <div className="relative z-10 flex flex-col justify-center h-full px-4 py-3">
+            <div className="text-[13px] font-bold text-white leading-tight mb-1.5 drop-shadow-md">
+              Free Estimates. Trusted Work.
+            </div>
+            <div className="text-[7px] text-white/65 mb-3 max-w-[80%] leading-relaxed drop-shadow">
+              Protecting Ohio homes since 2008. Licensed, insured, and guaranteed.
+            </div>
+            <div className="flex gap-1.5">
+              <div className="h-4 px-2.5 rounded-sm bg-[hsl(175,60%,40%)] text-[6px] flex items-center justify-center font-semibold text-white">
+                Get Free Estimate
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
