@@ -1,2 +1,1 @@
-# LumaSites
-AI-powered web agency portfolio and business management system
+Frontend website for LumaWesbites made with lovable.
