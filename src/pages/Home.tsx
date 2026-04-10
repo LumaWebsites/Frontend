@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Paintbrush, Search } from "lucide-react";
+import { MessageSquare, Paintbrush, Search, Wheat, Cake, Croissant } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import PortfolioCard, { CaseStudyPanel, type Project } from "@/components/PortfolioCard";
 import { projects } from "@/data/projects";
@@ -10,6 +10,12 @@ const steps = [
   { icon: MessageSquare, title: "We learn about your business", desc: "A quick conversation to understand your goals, customers, and what makes you different." },
   { icon: Paintbrush, title: "We build your site in days", desc: "No six-week timelines. We design and develop your site fast — without cutting corners." },
   { icon: Search, title: "You get found by more customers", desc: "Your site goes live, optimized for search, and starts working for your business 24/7." },
+];
+
+const featureCards = [
+  { icon: Wheat, label: "Artisan Breads" },
+  { icon: Cake, label: "Custom Cakes" },
+  { icon: Croissant, label: "Daily Pastries" },
 ];
 
 function HeroBrowserMockup() {
@@ -24,68 +30,82 @@ function HeroBrowserMockup() {
         </div>
         <div className="flex-1 mx-3">
           <div className="bg-primary-foreground/8 rounded-md px-3 py-1 text-[10px] text-primary-foreground/40">
-            www.yourbusiness.com
+            www.rosewoodbakery.com
           </div>
         </div>
       </div>
 
       {/* Website mockup content */}
-      <div className="bg-[hsl(216,45%,18%)] aspect-[4/3] relative p-4 flex flex-col">
+      <div className="bg-[hsl(30,20%,15%)] relative flex flex-col">
         {/* Nav bar */}
-        <div className="flex items-center justify-between mb-4 pb-2 border-b border-primary-foreground/8">
-          <span className="text-[9px] font-bold text-amber/80 tracking-wide">YourBrand</span>
+        <div className="relative z-10 flex items-center justify-between px-4 py-2.5 border-b border-primary-foreground/8">
+          <span className="text-[9px] font-bold text-[hsl(30,60%,85%)] tracking-wide">Rosewood Bakery</span>
           <div className="flex gap-3">
-            <span className="text-[7px] text-primary-foreground/30">Home</span>
-            <span className="text-[7px] text-primary-foreground/30">Services</span>
-            <span className="text-[7px] text-primary-foreground/30">About</span>
-            <span className="text-[7px] text-primary-foreground/30">Contact</span>
+            <span className="text-[7px] text-primary-foreground/40">Menu</span>
+            <span className="text-[7px] text-primary-foreground/40">About</span>
+            <span className="text-[7px] text-primary-foreground/40">Order</span>
+            <span className="text-[7px] text-primary-foreground/40">Visit</span>
           </div>
         </div>
 
-        {/* Hero section */}
-        <div className="mb-4">
-          <div className="text-[11px] font-bold text-primary-foreground/80 leading-tight mb-1">
-            Welcome to Your Business
-          </div>
-          <div className="text-[8px] text-primary-foreground/40 mb-3 max-w-[75%]">
-            We provide exceptional services for your community. Trusted by hundreds of local customers.
-          </div>
-          <div className="flex gap-1.5">
-            <div className="h-5 w-16 rounded-sm bg-amber/70 text-[6px] flex items-center justify-center font-medium text-primary-foreground/90">
-              Get Started
+        {/* Hero section with background image */}
+        <div className="relative h-[180px] overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/35250923/pexels-photo-35250923.jpeg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[hsl(30,30%,15%)/0.4]" />
+          <div className="relative z-10 flex flex-col justify-center h-full px-5 py-4">
+            <div className="text-[14px] font-bold text-white leading-tight mb-1.5 drop-shadow-md">
+              Freshly Baked Every Morning
             </div>
-            <div className="h-5 w-14 rounded-sm border border-primary-foreground/20 text-[6px] flex items-center justify-center text-primary-foreground/40">
-              Learn More
+            <div className="text-[8px] text-white/75 mb-3 max-w-[80%] leading-relaxed drop-shadow">
+              Fresh pastries, artisan breads & custom cakes made daily with love.
+            </div>
+            <div className="flex gap-1.5">
+              <div className="h-5 px-3 rounded-sm bg-amber text-[6px] flex items-center justify-center font-semibold text-[hsl(30,30%,15%)]">
+                Order Online
+              </div>
+              <div className="h-5 px-3 rounded-sm border border-white/40 text-[6px] flex items-center justify-center text-white/80">
+                View Menu
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Features row */}
-        <div className="grid grid-cols-3 gap-2 mb-3">
-          {["Fast Service", "Top Quality", "Best Prices"].map((label) => (
-            <div key={label} className="bg-primary-foreground/5 rounded p-2 text-center">
-              <div className="w-4 h-4 rounded-full bg-amber/20 mx-auto mb-1.5" />
-              <div className="text-[6px] font-semibold text-primary-foreground/50">{label}</div>
-              <div className="h-1 w-3/4 mx-auto rounded-full bg-primary-foreground/8 mt-1" />
+        {/* Feature cards */}
+        <div className="grid grid-cols-3 gap-2 p-3">
+          {featureCards.map(({ icon: Icon, label }) => (
+            <div key={label} className="bg-primary-foreground/6 rounded p-2.5 text-center">
+              <Icon size={14} className="mx-auto mb-1.5 text-amber/70" />
+              <div className="text-[7px] font-semibold text-primary-foreground/60">{label}</div>
             </div>
           ))}
         </div>
-
-        {/* Content section */}
-        <div className="grid grid-cols-2 gap-2 mt-auto">
-          <div className="bg-primary-foreground/4 rounded p-2">
-            <div className="h-8 rounded bg-primary-foreground/6 mb-1.5" />
-            <div className="h-1 w-full rounded-full bg-primary-foreground/8 mb-0.5" />
-            <div className="h-1 w-2/3 rounded-full bg-primary-foreground/6" />
-          </div>
-          <div className="bg-primary-foreground/4 rounded p-2">
-            <div className="h-8 rounded bg-primary-foreground/6 mb-1.5" />
-            <div className="h-1 w-full rounded-full bg-primary-foreground/8 mb-0.5" />
-            <div className="h-1 w-2/3 rounded-full bg-primary-foreground/6" />
-          </div>
-        </div>
       </div>
     </div>
+  );
+}
+
+function StatsBar() {
+  const stats = [
+    { value: "50+", label: "Local Businesses Served" },
+    { value: "5 Day", label: "Average Delivery" },
+    { value: "100%", label: "Satisfaction Guaranteed" },
+  ];
+
+  return (
+    <section className="bg-[hsl(210,20%,95%)] py-10 px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center divide-y md:divide-y-0 md:divide-x divide-border">
+        {stats.map((stat, i) => (
+          <div key={i} className="flex flex-col items-center px-10 py-4 md:py-0">
+            <span className="font-display text-2xl font-bold text-amber">{stat.value}</span>
+            <span className="text-sm text-muted-foreground mt-1">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -118,7 +138,7 @@ export default function Home() {
                 <span className="text-amber">to be found.</span>
               </h1>
               <p className="mt-6 text-lg md:text-xl text-primary-foreground/60 max-w-xl leading-relaxed">
-                We build fast, beautiful websites for small businesses — starting at $500.
+                We build fast, beautiful websites for small businesses — starting at $299.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Button variant="amber" size="xl" asChild>
@@ -137,6 +157,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Stats Bar */}
+      <StatsBar />
 
       {/* How It Works */}
       <section className="section-padding-lg bg-warm-white">
