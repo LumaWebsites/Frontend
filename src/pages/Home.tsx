@@ -20,7 +20,7 @@ const featureCards = [
 
 function HeroBrowserMockup() {
   return (
-    <div className="rounded-xl overflow-hidden border border-primary-foreground/10 shadow-2xl shadow-black/20">
+    <div className="rounded-xl overflow-hidden border border-primary-foreground/20 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-white/10">
       {/* Browser chrome */}
       <div className="bg-[hsl(216,40%,22%)] px-4 py-2.5 flex items-center gap-2 border-b border-primary-foreground/10">
         <div className="flex gap-1.5">
