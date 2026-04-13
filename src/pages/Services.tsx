@@ -5,38 +5,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const tiers = [
-  {
-    name: "Starter Site",
-    price: "$299–499",
-    desc: "Everything your business needs to get online and get found. Clean, fast, and professional — built and ready in days.",
-    features: [
-      "Up to 5 pages (Home, About, Services, Contact + 1 custom)",
-      "Mobile responsive design",
-      "Contact form that sends directly to your email",
-      "Google Maps embed",
-      "Basic SEO setup",
-      "Fast load time optimized",
-      "100% satisfaction guarantee",
-    ],
-    highlighted: false,
-  },
-  {
-    name: "Business Site",
-    price: "$599–899",
-    desc: "Everything in Starter, plus the ability to take payments online. Perfect for businesses that take reservations, deposits, or sell products directly from their site.",
-    features: [
-      "Everything in Starter",
-      "Stripe payment integration",
-      "Online ordering or reservation system",
-      "Guest checkout — no account required",
-      "Automatic email confirmation to customer",
-      "Instant notification to you when payment received",
-      "Photo gallery",
-      "Blog setup",
-    ],
-    highlighted: true,
-  },
+const pricingFeatures = [
+  "Mobile responsive design",
+  "Up to 5 pages (Home, About, Services, Contact + custom)",
+  "Contact form sent directly to your email",
+  "Google Maps embed",
+  "Basic SEO setup",
+  "Fast load time optimized",
+  "100% satisfaction guarantee",
 ];
 
 const carePlans = [
@@ -134,54 +110,32 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Pricing Tiers */}
+      {/* Pricing */}
       <section className="section-padding bg-warm-white">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-xl mx-auto">
           <ScrollReveal>
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-              {tiers.map((tier, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    "stagger-child rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1",
-                    tier.highlighted
-                      ? "bg-navy text-primary-foreground shadow-xl ring-2 ring-amber"
-                      : "bg-card border border-border shadow-sm"
-                  )}
-                >
-                  {tier.highlighted && (
-                    <span className="inline-block text-xs font-semibold uppercase tracking-wider text-amber mb-4">
-                      Most Popular
-                    </span>
-                  )}
-                  <h3 className="font-display text-xl font-bold">{tier.name}</h3>
-                  <div className="mt-3">
-                    <span className="font-display text-4xl font-bold">{tier.price}</span>
-                  </div>
-                  <p className={cn(
-                    "mt-3 text-sm leading-relaxed",
-                    tier.highlighted ? "text-primary-foreground/60" : "text-muted-foreground"
-                  )}>
-                    {tier.desc}
-                  </p>
-                  <ul className="mt-8 space-y-3 flex-1">
-                    {tier.features.map((f, j) => (
-                      <li key={j} className="flex items-start gap-3 text-sm">
-                        <Check size={16} className="mt-0.5 flex-shrink-0 text-amber" />
-                        <span className={tier.highlighted ? "text-primary-foreground/80" : "text-foreground/70"}>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    variant={tier.highlighted ? "amber" : "amber-outline"}
-                    size="lg"
-                    className="mt-8 w-full"
-                    asChild
-                  >
-                    <Link to="/contact">Get Started</Link>
-                  </Button>
-                </div>
-              ))}
+            <div className="rounded-2xl bg-card border border-border shadow-lg p-10 text-center">
+              <h3 className="font-display text-2xl font-bold text-foreground">Custom Website</h3>
+              <div className="mt-4">
+                <span className="font-display text-5xl font-bold text-foreground">$500 – $1,500</span>
+              </div>
+              <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-md mx-auto">
+                Every business is different. Pricing depends on the number of pages, features, and complexity of your project.
+              </p>
+              <ul className="mt-8 space-y-3 text-left">
+                {pricingFeatures.map((f, j) => (
+                  <li key={j} className="flex items-start gap-3 text-sm">
+                    <Check size={16} className="mt-0.5 flex-shrink-0 text-amber" />
+                    <span className="text-foreground/70">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button variant="amber" size="lg" className="mt-8 w-full" asChild>
+                <Link to="/contact">Get a Free Quote</Link>
+              </Button>
+              <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
+                Reply to any email from us or use the contact form — we'll put together a custom quote within 24 hours.
+              </p>
             </div>
           </ScrollReveal>
         </div>
